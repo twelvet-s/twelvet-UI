@@ -2,6 +2,11 @@
 node_modules
 /dist
 
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+**/*.log
+
 # local env files
 .env.local
 .env.*.local
@@ -19,3 +24,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+package-lock.json
+yarn.lock
