@@ -1,6 +1,8 @@
 import router from './router'
 import store from './store'
 
+import { Message } from 'element-ui'
+
 import {getToken} from '@/utils/auth'
 
 const whiteList = ['/login', '/auth-redirect', '/bind', '/register']
