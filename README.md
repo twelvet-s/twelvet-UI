@@ -1,4 +1,4 @@
-# twelvet-ui
+# twelvet-UI
 
 基于Vue的twelvet UI界面
 码云同步地址：https://gitee.com/twelvet/twelvet-UI
