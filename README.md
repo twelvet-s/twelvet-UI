@@ -4,7 +4,7 @@
 码云同步地址：https://gitee.com/twelvet/twelvet-UI
 
 ## 开发项目
-```
+```bash
 # 克隆项目
 git clone https://github.com/twelvet-s/twelvet-UI
 
