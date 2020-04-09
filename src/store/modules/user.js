@@ -19,9 +19,6 @@ const user = {
     SET_NAME: (state, name) => {
       state.name = name
     },
-    SET_AVATAR: (state, avatar) => {
-      state.avatar = avatar
-    },
     SET_ROLES: (state, roles) => {
       state.roles = roles
     },
@@ -36,10 +33,8 @@ const user = {
     Login({ commit }, userInfo) {
       const username = userInfo.username.trim()
       const password = userInfo.password
-      const code = userInfo.code
-      const uuid = userInfo.uuid
       return new Promise((resolve, reject) => {
-        login(username, password, code, uuid).then(res => {
+        login(username, password).then(res => {
           setToken(res.token)
           commit('SET_TOKEN', res.token)
           resolve()
@@ -54,16 +49,15 @@ const user = {
       return new Promise((resolve, reject) => {
         getInfo(state.token).then(res => {
           const user = res.user
-          const avatar = user.avatar == "" ? require("@/assets/images/profile.jpg") : process.env.VUE_APP_BASE_API + user.avatar;
-          if (res.roles && res.roles.length > 0) { // 验证返回的roles是否是一个非空数组
+          // 验证返回的roles是否是一个非空数组
+          if (res.roles && res.roles.length > 0) { 
             commit('SET_ROLES', res.roles)
             commit('SET_PERMISSIONS', res.permissions)
           } else {
-            //回调mutations改变state
+            // 回调mutations改变state
             commit('SET_ROLES', ['ROLE_DEFAULT'])
           }
           commit('SET_NAME', user.username)
-          commit('SET_AVATAR', avatar)
           resolve(res)
         }).catch(error => {
           reject(error)

@@ -1,12 +1,16 @@
 import http from '@/utils/http'
 
-// 登录方法
-export function login(username, password, code, uuid) {
+/**
+ * 登录方法
+ * @param {String} username 
+ * @param {String} password 
+ * @param {int} code 
+ * @param {String} uuid 
+ */
+export function login(username, password) {
   const data = {
     username,
-    password,
-    code,
-    uuid
+    password
   }
   return http({
     url: '/login',
@@ -15,7 +19,9 @@ export function login(username, password, code, uuid) {
   })
 }
 
-// 获取用户详细信息
+/**
+ * 获取用户详细信息
+ */
 export function getInfo() {
   return http({
     url: '/getInfo',
@@ -23,7 +29,9 @@ export function getInfo() {
   })
 }
 
-// 退出方法
+/**
+ * 退出方法
+ */
 export function logout() {
   return http({
     url: '/logout',
@@ -31,7 +39,9 @@ export function logout() {
   })
 }
 
-// 获取验证码
+/**
+ * 获取验证码
+ */
 export function getCodeImg() {
   return http({
     url: '/captchaImage',

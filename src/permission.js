@@ -1,16 +1,15 @@
 import router from './router'
 import store from './store'
 
-import { Message } from 'element-ui'
-
 import {getToken} from '@/utils/auth'
 
-const whiteList = ['/login', '/auth-redirect', '/bind', '/register']
+// 无需登录页面
+const whiteList = ['/login', '/auth-redirect']
 
 router.beforeEach((to, from, next) => {
     // 判断有没有token
     if (getToken()) {
-        
+
         if (to.path === '/login') {
             next({
                 path: '/'

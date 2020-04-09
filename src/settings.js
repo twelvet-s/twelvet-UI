@@ -4,11 +4,11 @@
  */
 module.exports = {
   // 项目端口
-  port: '80',
+  port: '8888',
   // 项目标题
   title: 'TwelveT',
   // 项目部署目录
   root: '/',
   // 项目API
-  api: 'https://api.twelvet.cn',
+  api: 'http://localhost:9527',
 }
