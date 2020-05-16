@@ -1,10 +1,11 @@
 import { login, logout, getInfo } from '@/api/login'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getAccessToken, getRefreshToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
   // 全局共享数据
   state: {
-    token: getToken(),
+    accessToken: getAccessToken(),
+    getRefreshToken: getRefreshToken(),
     name: '',
     avatar: '',
     roles: [],
@@ -13,8 +14,8 @@ const user = {
 
   // 改变数据方法
   mutations: {
-    SET_TOKEN: (state, token) => {
-      state.token = token
+    SET_TOKEN: (state, accessToken) => {
+      state.accessToken = accessToken
     },
     SET_NAME: (state, name) => {
       state.name = name
@@ -34,9 +35,11 @@ const user = {
       const username = userInfo.username.trim()
       const password = userInfo.password
       return new Promise((resolve, reject) => {
+        // 调用方法，执行登录
         login(username, password).then(res => {
-          setToken(res.token)
-          commit('SET_TOKEN', res.token)
+          // 设置token 以及刷新令牌
+          setToken(res.access_token, res.refresh_token)
+          commit('SET_TOKEN', res.access_token, res.refresh_token)
           resolve()
         }).catch(error => {
           reject(error)

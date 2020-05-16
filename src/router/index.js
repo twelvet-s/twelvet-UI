@@ -8,6 +8,10 @@ export default new Router({
   // 去掉url中的#
   mode: 'history',
   routes: [{
+      path: '/index',
+      component: () => import('@/views/index'),
+
+    }, {
       path: '/login',
       component: () => import('@/views/login'),
       hidden: true

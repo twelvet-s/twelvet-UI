@@ -1,25 +1,39 @@
 import Cookies from 'js-cookie'
 
-const TokenKey = 'Admin-Token'
+const token = {
+  accessToken: 'accessToken',
+  refreshToken: 'refreshToken'
+}
+
 
 /**
- * 获得token
+ * 获得accessToken
  */
-export function getToken() {
-  return Cookies.get(TokenKey)
+export function getAccessToken() {
+  return Cookies.get(token.accessToken)
+}
+
+/**
+ * 获得RefreshToken
+ */
+export function getRefreshToken() {
+  return Cookies.get(token.refreshToken)
 }
 
 /**
  * 设置token
- * @param {String} token 
+ * @param {String} access
+ * @param {String} refresh 
  */
-export function setToken(token) {
-  return Cookies.set(TokenKey, token)
+export function setToken(access, refresh) {
+  Cookies.set(token.accessToken, access)
+  Cookies.set(token.refreshToken, refresh)
 }
 
 /**
  * 移除token
  */
 export function removeToken() {
-  return Cookies.remove(TokenKey)
+  Cookies.remove(token.accessToken)
+  Cookies.remove(token.refreshToken)
 }

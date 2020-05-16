@@ -1,11 +1,12 @@
 import http from '@/utils/http'
 
+// 导入配置信息
+const twelvet = require('../settings.js')
+
 /**
  * 登录方法
  * @param {String} username 
  * @param {String} password 
- * @param {int} code 
- * @param {String} uuid 
  */
 export function login(username, password) {
   const data = {
@@ -13,8 +14,8 @@ export function login(username, password) {
     password
   }
   return http({
-    url: '/login',
-    method: 'post',
+    url: twelvet.service.system.login,
+    method: 'POST',
     params: data
   })
 }
@@ -24,7 +25,7 @@ export function login(username, password) {
  */
 export function getInfo() {
   return http({
-    url: '/getInfo',
+    url: twelvet.service.system.info,
     method: 'get'
   })
 }

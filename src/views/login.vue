@@ -78,10 +78,6 @@ export default {
       loading: false
     };
   },
-  // 初始化成功后执行函数
-  mounted() {
-    
-  },
   methods: {
     // 点击登录按钮
     handleLogin() {
@@ -90,7 +86,7 @@ export default {
         if (valid) {
           // 更改登录按钮状态
           this.loading = true;
-          // 是否需要使用cookie记住账号密码
+          // 是否需要使用cookie记住/清除账号密码
           if (this.loginForm.rememberMe) {
             Cookies.set("username", this.loginForm.username, { expires: 30 });
             Cookies.set("password", this.loginForm.password, { expires: 30 });
@@ -108,7 +104,7 @@ export default {
             .dispatch("Login", this.loginForm)
             .then(() => {
               // 登录成功跳转
-              this.$router.push({ path: this.redirect || "/" });
+              //this.$router.push({ path: this.redirect || "/" });
             })
             .catch(() => {
               // 恢复登录状态
